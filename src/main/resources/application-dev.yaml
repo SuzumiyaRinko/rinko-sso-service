@@ -1,0 +1,55 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null # 默认忽略null值（使用@EnableWebMvc会失效）
+  datasource:
+    url: jdbc:mysql://192.168.66.150:3306/db_Rinko-Community?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: 192.168.66.150
+    port: 6379
+    password: 123456
+  rabbitmq:
+    host: 192.168.66.150
+    port: 5672
+    username: root
+    password: 123456
+    virtual-host: /
+    listener:
+      simple:
+        prefetch: 1
+        retry:
+          enabled: true
+          max-attempts: 3
+    publisher-returns: true
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: Txz2018911711@163.com
+    password: HEHYFEDCCTZKFCJH
+    properties:
+      smtp.ssl.enable: true # 启用SSL
+      smtp.socketFactory.class: SSL_FACTORY # 使用JSSE的SSL
+      smtp.socketFactory.fallback: false # 只处理SSL的连接
+logging:
+  level:
+    suzumiya.aspect.ControllerAspect: debug
+    suzumiya.controller.WSChatController: debug
+    suzumiya.service.impl.UserServiceImpl: debug
+    suzumiya.mq.MQConsumer: debug
+    suzumiya.job: debug
+#  pattern:
+#    dateformat: HH:mm:ss:SSS
+mybatis-plus:
+  #  mapper-locations: suzumiya/mapper
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: suzumiya.model.pojo
+
+url:
+  prefix-activation-url: http://localhost:8080/Rinko-Community/user/activation/
+  user-login-url: http://localhost/
+  user-register-url: http://localhost/
