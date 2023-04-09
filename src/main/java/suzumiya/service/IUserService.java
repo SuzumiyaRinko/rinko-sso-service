@@ -16,6 +16,9 @@ public interface IUserService extends IService<User> {
     /* 用户匿名登录 */
     String loginAnonymously();
 
+    /* 用户登出 */
+    void logout(String token);
+
     /* 用户注册 */
     void register(UserRegisterDTO userRegisterDTO);
 

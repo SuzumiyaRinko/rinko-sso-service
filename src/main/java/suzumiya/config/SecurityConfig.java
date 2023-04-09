@@ -34,18 +34,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable() // 关闭csrf
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 不通过Session获取SecurityContext（前后端分离的情况下就要设置这个）
-                .and()
+                .cors().and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // 不通过Session获取SecurityContext（前后端分离的情况下就要设置这个）
                 .authorizeRequests(authorize -> authorize
-//                        .antMatchers("/test/**").hasAnyAuthority(SecurityConst.SYS_BOOK)
-                        .antMatchers("/verifyCode").permitAll()
-                        .antMatchers("/user/register").anonymous()
-                        .antMatchers("/user/login").anonymous()
-                        .antMatchers("/user/loginAnonymously").anonymous()
-                        .antMatchers("/user/activation").anonymous()
-                        .anyRequest().authenticated()) // 登录用户和匿名用户都可以访问
-                .addFilterAfter(statisticsFilter, FilterSecurityInterceptor.class)
-                .cors(); // 允许跨域访问
+                        .anyRequest().permitAll().and()
+                        .addFilterAfter(statisticsFilter, FilterSecurityInterceptor.class)
+                ); // 允许跨域访问
         return http.build();
     }
 }

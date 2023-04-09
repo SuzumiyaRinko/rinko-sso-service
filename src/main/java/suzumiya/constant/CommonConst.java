@@ -1,11 +1,8 @@
 package suzumiya.constant;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
@@ -37,50 +34,50 @@ public class CommonConst {
     public static String HTML_ACTIVATION_SUCCESS = null;
     public static String HTML_ACTIVATION_EXPIRED = null;
 
-    static {
-        InputStream in1 = null;
-        InputStream in2 = null;
-        InputStream in3 = null;
-        try {
-            // HTML_ACTIVATION
-            in1 = new ClassPathResource("static/html/html_activation.txt").getInputStream();
-            StringBuilder sb = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            int cnt;
-            while ((cnt = in1.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, cnt));
-            }
-            HTML_ACTIVATION = sb.toString();
-
-            // HTML_ACTIVATION_SUCCESS
-            in2 = new ClassPathResource("static/html/html_activation_success.txt").getInputStream();
-            sb = new StringBuilder();
-            bytes = new byte[1024];
-            while ((cnt = in2.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, cnt));
-            }
-            HTML_ACTIVATION_SUCCESS = sb.toString();
-
-            // HTML_ACTIVATION_EXPIRED
-            in3 = new ClassPathResource("static/html/html_activation_expired.txt").getInputStream();
-            sb = new StringBuilder();
-            bytes = new byte[1024];
-            while ((cnt = in3.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, cnt));
-            }
-            HTML_ACTIVATION_EXPIRED = sb.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                in1.close();
-                in2.close();
-                in3.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    static {
+//        InputStream in1 = null;
+//        InputStream in2 = null;
+//        InputStream in3 = null;
+//        try {
+//            // HTML_ACTIVATION
+//            in1 = new ClassPathResource("static/html/html_activation.txt").getInputStream();
+//            StringBuilder sb = new StringBuilder();
+//            byte[] bytes = new byte[1024];
+//            int cnt;
+//            while ((cnt = in1.read(bytes)) != -1) {
+//                sb.append(new String(bytes, 0, cnt));
+//            }
+//            HTML_ACTIVATION = sb.toString();
+//
+//            // HTML_ACTIVATION_SUCCESS
+//            in2 = new ClassPathResource("static/html/html_activation_success.txt").getInputStream();
+//            sb = new StringBuilder();
+//            bytes = new byte[1024];
+//            while ((cnt = in2.read(bytes)) != -1) {
+//                sb.append(new String(bytes, 0, cnt));
+//            }
+//            HTML_ACTIVATION_SUCCESS = sb.toString();
+//
+//            // HTML_ACTIVATION_EXPIRED
+//            in3 = new ClassPathResource("static/html/html_activation_expired.txt").getInputStream();
+//            sb = new StringBuilder();
+//            bytes = new byte[1024];
+//            while ((cnt = in3.read(bytes)) != -1) {
+//                sb.append(new String(bytes, 0, cnt));
+//            }
+//            HTML_ACTIVATION_EXPIRED = sb.toString();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                in1.close();
+//                in2.close();
+//                in3.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     @Value("${url.prefix-activation-url}")
     public void setPREFIX_ACTIVATION_URL(String PREFIX_ACTIVATION_URL) {

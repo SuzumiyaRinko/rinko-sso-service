@@ -53,3 +53,9 @@ url:
   prefix-activation-url: http://localhost:8080/Rinko-Community/user/activation/
   user-login-url: http://localhost/
   user-register-url: http://localhost/
+
+app-description:
+  iconUrls: /Rinko-Community.png, /Rinko-Community.png, 0
+  appNames: Rinko-Community, Rinko-Community-Test, 0
+  appUrls: http://localhost/Rinko-Community/#/main/home, 0
+  isAvailables: true, false, 0

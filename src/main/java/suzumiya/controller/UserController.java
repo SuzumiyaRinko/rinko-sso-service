@@ -35,6 +35,13 @@ public class UserController {
         return ResponseGenerator.returnOK("用户匿名登录成功", token);
     }
 
+    @PostMapping("/logout")
+    public BaseResponse<String> logout(HttpServletRequest request) {
+        /* 用户登出 */
+        userService.logout(request.getHeader("Authorization"));
+        return ResponseGenerator.returnOK("用户退出登录成功", null);
+    }
+
     @PostMapping("/register")
     public BaseResponse<String> register(@RequestBody UserRegisterDTO userRegisterDTO) {
         /* 用户注册 */

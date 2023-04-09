@@ -148,6 +148,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
+    public void logout(String token) {
+        /* 删除Redis中的用户信息 */
+        Object userId = JWTUtil.parseToken(token).getPayload("userId");
+        redisTemplate.delete(RedisConst.LOGIN_USER_KEY + userId);
+    }
+
+    @Override
     public void register(UserRegisterDTO userRegisterDTO) {
         /* 判断验证码是否正确 */
         String uuid = userRegisterDTO.getUuid();
