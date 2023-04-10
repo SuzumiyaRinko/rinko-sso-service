@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   jackson:
     default-property-inclusion: non_null # 默认忽略null值（使用@EnableWebMvc会失效）
